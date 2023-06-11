@@ -3,7 +3,7 @@ import CountdownTimer from './CountdownTimer';
 
 function App() {
     return (
-        <div>
+        <div className='app-container'>
             <CountdownTimer />
         </div>
     );

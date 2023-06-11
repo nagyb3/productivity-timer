@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import "./App.css"
 
 function CountdownTimer() {
+    
     const [timer, setTimer] = useState(1800); // 30 minutes in seconds
+
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
@@ -37,9 +40,17 @@ function CountdownTimer() {
         setTimer(hours * 3600 + minutes * 60 + seconds)
     }
 
+    function handleReset() {
+        isRunning && setIsRunning(false);
+        setTimer(1800);
+    }
+
     return (
-        <div>
-            <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>
+        <div className='countdown-container'>
+            <div className="top-row">
+                <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>
+                <button onClick={handleReset}>RESET</button>
+            </div>
             <p onClick={handleMinuteChange}>{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
         </div>
     );
