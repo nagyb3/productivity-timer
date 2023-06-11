@@ -28,6 +28,9 @@ function CountdownTimer() {
         let hours = 0;
         let minutes = 0;
         let newAmount = prompt("");
+        if (newAmount === null) {
+            newAmount = "3000";
+        }
         newAmount = [...newAmount]
         let seconds = parseInt(newAmount.splice(newAmount.length - 2, 2).join(''));
         if (newAmount.length > 0) {
@@ -46,12 +49,14 @@ function CountdownTimer() {
     }
 
     return (
-        <div className='countdown-container'>
-            <div className="top-row">
-                <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>
-                <button onClick={handleReset}>RESET</button>
+        <div className='countdown-outer'>
+            <div className='countdown-container'>
+                <div className="top-row">
+                    <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>
+                    <button onClick={handleReset}>RESET</button>
+                </div>
+                <p onClick={handleMinuteChange}>{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
             </div>
-            <p onClick={handleMinuteChange}>{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
         </div>
     );
 }

@@ -26,11 +26,11 @@ button {
 	margin: 0;
 }
 
-.app-container {
+.countdown-outer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: calc(100vh - 100px);
 	background-color: lightblue;
 	justify-content: center;
 }
@@ -49,4 +49,27 @@ button {
 	border: 0;
 	border-radius: 5px;
 	padding: 15px;
+}
+
+.footer-container {
+	display: flex;
+	color: white;
+	background-color: black;
+	height: 100px;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer-container > ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	padding: 0;
+	font-size: 1.1rem;
+}
+
+.footer-container a {
+	color: white;
 }
