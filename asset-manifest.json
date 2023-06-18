@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/productivity-timer/static/css/main.9b003d87.css",
+    "main.js": "/productivity-timer/static/js/main.5a5a3d59.js",
+    "static/media/Programme-Regular.ttf": "/productivity-timer/static/media/Programme-Regular.72a69a23673ba936f9ad.ttf",
+    "index.html": "/productivity-timer/index.html",
+    "main.9b003d87.css.map": "/productivity-timer/static/css/main.9b003d87.css.map",
+    "main.5a5a3d59.js.map": "/productivity-timer/static/js/main.5a5a3d59.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9b003d87.css",
+    "static/js/main.5a5a3d59.js"
+  ]
+}
