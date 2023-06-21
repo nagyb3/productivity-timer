@@ -24,6 +24,7 @@ button {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 20px;
 }
 
 .countdown-container > p {
@@ -36,8 +37,8 @@ button {
 .app-container {
 	justify-content: center;
 	display: grid;
-	grid-template-rows: 300px;
-	grid-template-columns: repeat(3, 300px);
+	grid-template-rows: 400px;
+	grid-template-columns: repeat(3, 30vw);
 	gap: 40px;
 	height: 100%;
 	box-sizing: border-box;
@@ -52,8 +53,9 @@ button {
 
 .countdown-container > .top-row {
 	display: flex;
-	justify-content: center;
-	gap: 20px;
+	justify-content: space-around;
+	width: 100%;
+	/* gap: 20px; */
 }
 
 .countdown-container > .top-row > button {
