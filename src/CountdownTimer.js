@@ -49,14 +49,12 @@ function CountdownTimer() {
     }
 
     return (
-        <div className='countdown-outer'>
-            <div className='countdown-container'>
-                <div className="top-row">
-                    <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>
-                    <button onClick={handleReset}>RESET</button>
-                </div>
-                <p onClick={handleMinuteChange}>{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
+        <div className='countdown-container'>
+            <div className="top-row">
+                <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>
+                <button onClick={handleReset}>RESET</button>
             </div>
+            <p onClick={handleMinuteChange}>{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
         </div>
     );
 }

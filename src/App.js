@@ -1,7 +1,7 @@
 import React from 'react';
 import CountdownTimer from './CountdownTimer';
 import Footer from './Footer';
-import Header from './Header';
+import TimeLogger from './TimeLogger';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -31,10 +31,15 @@ export const auth = getAuth(app);
 
 function App() {
     return (
-        <div className='app-container'>
-            <Header></Header>
-            <CountdownTimer />
-            <Footer></Footer>
+        <div className='page-container'>
+            <main>
+                <div className='app-container'>
+                    <TimeLogger />
+                    <CountdownTimer />
+                    <TimeLogger />
+                </div>
+            </main>
+            <Footer />
         </div>
     );
 }
