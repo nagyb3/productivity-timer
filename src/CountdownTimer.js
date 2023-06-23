@@ -17,6 +17,12 @@ function CountdownTimer() {
         return () => clearInterval(interval);
     }, [isRunning]);
 
+    useEffect(() => {
+        if (timer === 0) {
+            setIsRunning(false);
+        }
+    }, [timer])
+
     const minutes = Math.floor(timer / 60);
     const seconds = timer % 60;
 
