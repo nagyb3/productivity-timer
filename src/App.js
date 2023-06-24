@@ -3,17 +3,12 @@ import CountdownTimer from './CountdownTimer';
 import Footer from './Footer';
 import TimeLogger from './TimeLogger';
 import Login from './Login';
+import { getFirestore } from 'firebase/firestore';
 
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+
 import { getAuth, GoogleAuthProvider } from "firebase/auth"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBUQMMvPsKzTBs0hhNL6u5quGS0YnT_0Xs",
   authDomain: "productivity-timer-b3d35.firebaseapp.com",
@@ -24,12 +19,13 @@ const firebaseConfig = {
   measurementId: "G-9S74TY2L0H"
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-// export const analytics = getAnalytics(app);
+
 export const auth = getAuth(app);
 
 export const googleProvider = new GoogleAuthProvider();
+
+export const db = getFirestore(app);
 
 function App() {
 
