@@ -3,6 +3,7 @@ import CountdownTimer from './CountdownTimer';
 import Footer from './Footer';
 import TimeLogger from './TimeLogger';
 import Login from './Login';
+import NoiseGenerator from './NoiseGenerator';
 import { getFirestore } from 'firebase/firestore';
 
 import { initializeApp } from "firebase/app";
@@ -36,7 +37,7 @@ function App() {
         <div className='page-container'>
             <main>
                 <div className='app-container'>
-                    <TimeLogger />
+                    <NoiseGenerator />
                     <CountdownTimer />
                     {isLoggedIn ? <TimeLogger setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}
                 </div>

@@ -9,6 +9,8 @@ export default function TimeLogger(props) {
 
     const timedataCollectionRef = collection(db, "timedata");
 
+    const [newNumber, setNewNumber] = React.useState(0);
+
     const logout = async () => {
         await signOut(auth);
         props.setIsLoggedIn(false);
@@ -32,9 +34,24 @@ export default function TimeLogger(props) {
         getTimeData();
     }, []);
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        // console.log(newNumber);
+        setNewNumber(0);
+    }
+
     return (
         <div className="timelogger-container card">
-            <button className="logout" onClick={logout}>LOGOUT</button>
+            <form onSubmit={e => handleSubmit(e)}>
+                <label htmlFor="time">Submit minutes to profile:</label>
+                <input onChange={(e) => setNewNumber(e.target.value)} value={newNumber} type="number" name="time" id="time" 
+                placeholder="enter minutes..."
+                min={0} />
+                <input type="submit" className="submit button" value="SUBMIT"/>
+            </form>
+            <div>
+                <button className="logout" onClick={logout}>LOGOUT</button>
+            </div>
         </div>
     )
 }
