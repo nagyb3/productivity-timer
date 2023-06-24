@@ -55,7 +55,7 @@ function CountdownTimer() {
     }
 
     return (
-        <div className='countdown-container'>
+        <div className='countdown-container card'>
             <p onClick={handleMinuteChange}>{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
             <div className="top-row">
                 <button onClick={handleStart}>{isRunning ? "STOP" : "START"}</button>

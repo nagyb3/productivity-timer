@@ -2,11 +2,12 @@ import React from 'react';
 import CountdownTimer from './CountdownTimer';
 import Footer from './Footer';
 import TimeLogger from './TimeLogger';
+import Login from './Login';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth"
+import { getAuth, GoogleAuthProvider } from "firebase/auth"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,15 +29,20 @@ export const app = initializeApp(firebaseConfig);
 // export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
+export const googleProvider = new GoogleAuthProvider();
 
 function App() {
+
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+
     return (
         <div className='page-container'>
             <main>
                 <div className='app-container'>
                     <TimeLogger />
                     <CountdownTimer />
-                    <TimeLogger />
+                    {isLoggedIn ? <TimeLogger setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}
                 </div>
             </main>
             <Footer />
