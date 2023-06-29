@@ -28,7 +28,7 @@ export default function TimeLogger(props) {
             ...doc.data(), 
             id: doc.id
           }));
-          console.log(filteredData);
+        //   console.log(filteredData);
           setTimeData(filteredData);
         } catch (err) {
           console.error(err);
@@ -41,7 +41,7 @@ export default function TimeLogger(props) {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(newNumber);
+        // console.log(newNumber);
         if (newNumber !== null) {
             try {
                 await addDoc(timedataCollectionRef, {
@@ -58,35 +58,51 @@ export default function TimeLogger(props) {
         }
     }
 
-    console.log(timeData[0])
+    console.log(newNumber)
 
     const getStats = () => {
         setShowForm(prev => !prev);
-        //get todays minutes for this user
         let todayMinutesVar = 0;
+        let lastSevenDaysTotal = 0;
+        let lastSevenDaysAvg = 0;
         for (let i = 0; i < timeData.length; i++) {
             if (auth.currentUser.email === timeData[i].authorEmail) {
                 if (dateFormat(timeData[i].submittedAt.toDate(), 'yyyy-mm-dd') === dateFormat(new Date(), 'yyyy-mm-dd')) {
                     todayMinutesVar += timeData[i].data;
                 }
+                if (new Date() - 604800000 < timeData[i].submittedAt.toDate() - 0 
+                    && timeData[i].submittedAt.toDate() - 0 < new Date()) {
+                    lastSevenDaysTotal += timeData[i].data;
+                } else {
+                    // console.log(new Date() - 518400);
+                    // console.log(timeData[i].submittedAt.toDate() - 0);
+                    // console.log(new Date() - 0);
+                    // console.log(timeData[i].submittedAt.toDate() - 0)
+                    // console.log(new Date() - 604800000);
+                }
+                // console.log(new Date() - 10 < new Date());
+                // console.log(new Date() - 10);
             }
-            setTodayMinutes(todayMinutesVar);
         }
+        lastSevenDaysAvg = lastSevenDaysTotal / 7;
+        // console.log(lastSevenDaysAvg)
+        setTodayMinutes(todayMinutesVar);
     }
 
     return (
         <div className="timelogger-container card">
             <button onClick={getStats}>{ showForm ? "show stats" : "show form"}</button>
-            { showForm ? 
+            { showForm ?
                 <form onSubmit={e => handleSubmit(e)}>
                     <label htmlFor="time">Submit minutes to profile:</label>
-                    <input onChange={(e) => setNewNumber(Number(e.target.value))} type="number" name="time" id="time" 
-                    placeholder="enter minutes..." value={newNumber}
+                    <input value={newNumber} onChange={(e) => setNewNumber(Number(e.target.value))} type="number" name="time" id="time" 
+                    placeholder="enter minutes..."
                     min={0} />
                     <input type="submit" className="submit button" value="SUBMIT"/>
-                </form> :
+                </form>
+                 :
                 <div>Today's minutes: {todayMinutes}</div>
-            }
+             }
             <div>
                 <button className="logout" onClick={logout}>LOGOUT</button>
             </div>

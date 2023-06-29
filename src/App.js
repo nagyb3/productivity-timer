@@ -32,6 +32,10 @@ function App() {
 
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
+    React.useEffect(() => {
+        auth.onAuthStateChanged(user => user ? setIsLoggedIn(true) : setIsLoggedIn(false));
+        document.title = 'Productivity Timer';
+    }, [])
 
     return (
         <div className='page-container'>
