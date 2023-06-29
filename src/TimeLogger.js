@@ -10,7 +10,7 @@ export default function TimeLogger(props) {
 
     const timedataCollectionRef = collection(db, "timedata");
 
-    const [newNumber, setNewNumber] = React.useState(null);
+    const [newNumber, setNewNumber] = React.useState("");
 
     const [showForm, setShowForm] = React.useState(true);
 
@@ -42,7 +42,7 @@ export default function TimeLogger(props) {
     const handleSubmit = async(e) => {
         e.preventDefault();
         // console.log(newNumber);
-        if (newNumber !== null) {
+        if (newNumber !== "") {
             try {
                 await addDoc(timedataCollectionRef, {
                     data: newNumber,
@@ -51,7 +51,7 @@ export default function TimeLogger(props) {
                     authorEmail: auth.currentUser.email,
                 });
                 getTimeData();
-                setNewNumber(null);
+                setNewNumber("");
             } catch (err) {
                 console.log(err)
             }
