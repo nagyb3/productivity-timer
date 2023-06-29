@@ -170,6 +170,7 @@ button.logout {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	gap: 30px;
 }
 
 input#time {
@@ -180,11 +181,17 @@ input#time {
 }
 
 input.submit {
-	font-size: 0.8rem;
+	font-size: 1rem;
 	background: darkblue;
 	color: white;
 	border: 0;
 	border-radius: 5px;
 	padding: 12px;
 	font-weight: 800;
+}
+
+.timelogger-container form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
