@@ -56,7 +56,7 @@ export default function TimeLogger(props) {
         }
     }
 
-    console.log(newNumber)
+    // console.log(newNumber)
 
     const getStats = () => {
         setShowForm(prev => !prev);
