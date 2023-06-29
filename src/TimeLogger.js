@@ -1,6 +1,6 @@
 import React from "react";
 import { signOut } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, addDoc } from "firebase/firestore"
 import { auth, db } from "./App";
 
 export default function TimeLogger(props) {
@@ -9,7 +9,7 @@ export default function TimeLogger(props) {
 
     const timedataCollectionRef = collection(db, "timedata");
 
-    const [newNumber, setNewNumber] = React.useState(0);
+    const [newNumber, setNewNumber] = React.useState(null);
 
     const logout = async () => {
         await signOut(auth);
@@ -34,18 +34,33 @@ export default function TimeLogger(props) {
         getTimeData();
     }, []);
 
-    function handleSubmit(e) {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        // console.log(newNumber);
-        setNewNumber(0);
+        console.log(newNumber);
+        if (newNumber !== null) {
+            try {
+                await addDoc(timedataCollectionRef, {
+                    data: newNumber,
+                    submittedAt: new Date(),
+                    authorDisplayName: auth.currentUser.displayName, 
+                    authorEmail: auth.currentUser.email,
+                });
+                getTimeData();
+                setNewNumber(0);
+            } catch (err) {
+                console.log(err)
+            }
+        }
     }
+
+    console.log(typeof newNumber, newNumber)
 
     return (
         <div className="timelogger-container card">
             <form onSubmit={e => handleSubmit(e)}>
                 <label htmlFor="time">Submit minutes to profile:</label>
-                <input onChange={(e) => setNewNumber(e.target.value)} value={newNumber} type="number" name="time" id="time" 
-                placeholder="enter minutes..."
+                <input onChange={(e) => setNewNumber(Number(e.target.value))} type="number" name="time" id="time" 
+                placeholder="enter minutes..." value={newNumber}
                 min={0} />
                 <input type="submit" className="submit button" value="SUBMIT"/>
             </form>
