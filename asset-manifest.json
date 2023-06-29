@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/productivity-timer/static/css/main.bb37bc2e.css",
-    "main.js": "/productivity-timer/static/js/main.bcfb1bd5.js",
+    "main.css": "/productivity-timer/static/css/main.a1a99c97.css",
+    "main.js": "/productivity-timer/static/js/main.6ced5689.js",
     "static/media/Programme-Regular.ttf": "/productivity-timer/static/media/Programme-Regular.72a69a23673ba936f9ad.ttf",
     "static/media/gradient.svg": "/productivity-timer/static/media/gradient.262b1482582c93efcbad.svg",
     "index.html": "/productivity-timer/index.html",
-    "main.bb37bc2e.css.map": "/productivity-timer/static/css/main.bb37bc2e.css.map",
-    "main.bcfb1bd5.js.map": "/productivity-timer/static/js/main.bcfb1bd5.js.map"
+    "main.a1a99c97.css.map": "/productivity-timer/static/css/main.a1a99c97.css.map",
+    "main.6ced5689.js.map": "/productivity-timer/static/js/main.6ced5689.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb37bc2e.css",
-    "static/js/main.bcfb1bd5.js"
+    "static/css/main.a1a99c97.css",
+    "static/js/main.6ced5689.js"
   ]
 }
