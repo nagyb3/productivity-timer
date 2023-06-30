@@ -208,3 +208,33 @@ button.show-stat {
 	padding: 10px;
 	font-weight: 600;
 }
+
+p.noise {
+	font-size: 2rem;
+	width: fit-content;
+	margin: 0;
+}
+
+.noise-generator-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 40px;
+}
+
+.noise-generator-container .start-stop {
+	display: flex;
+	gap: 50px;
+}
+
+.noise-generator-container .start-stop button {
+	padding: 12px;
+	background-color: darkblue;
+	border: 0;
+	color: white;
+	border-radius: 5px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
