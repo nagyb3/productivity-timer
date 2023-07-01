@@ -5,10 +5,16 @@ export default function NoiseGenerator() {
 
     const [isPlaying, setIsPlaying] = React.useState(false);
 
-    const [sliderState, setSliderState] = React.useState(5);
+    const [sliderState, setSliderState] = React.useState(-5);
 
-    const noise = new Tone.Noise().toDestination();
-    noise.type = "brown";
+    const [volume, setVolume] = React.useState(-12);
+
+    const vol = new Tone.Volume(volume).toDestination();
+    const noise = new Tone.Noise().connect(vol);
+
+    React.useEffect(() => {
+        noise.type = "brown";    
+    }, [])
 
     function handleClick() {
         noise.start();
@@ -21,28 +27,35 @@ export default function NoiseGenerator() {
     // console.log(isPlaying);
 
     function handleBrown() {
+        noise.stop("+0");
         noise.type = "brown";
+        noise.start();
     }
 
     function handleWhite() {
+        noise.stop("+0");
         noise.type = "white";
+        noise.start();
     }
 
     function handlePink() {
+        noise.stop("+0");
         noise.type = "pink";
+        noise.start();
     }
 
     function handleChange(e) {
         e.preventDefault();
-        // console.log(e.target.value);
         setSliderState(e.target.value);
+        setVolume(e.target.value);
+        noise.stop("+0");
     }
 
     return (
         <div className="noise-generator-container card">
             <p className="noise">Noise</p>
             <div className="slider-container">
-                <input type="range" min="0" max="10" value={sliderState}
+                <input type="range" min="-10" max="-2" value={sliderState}
                 onChange={handleChange} />
             </div>
             <div className="start-stop">
